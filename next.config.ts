@@ -1,12 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+	// output: 'export',
   images: {
 		remotePatterns: [
 			{
 				protocol: 'https',
 				hostname: 'bytegrad.com',
-				pathname: '/course-assets/react-nextjs/evento.png',
 			},
 			{
 				protocol: 'https',

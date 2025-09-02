@@ -1,6 +1,6 @@
 import Image from "next/image";
 import {Metadata} from "next";
-import {getEvent} from "@/lib/utilities";
+import {getEvent} from "@/lib/server-utilities";
 
 type Props = {
 	params: {
@@ -9,12 +9,21 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const slug = params.slug;
+	const { slug } = await params;
 	const event = await getEvent(slug);
 
 	return {
 		title: event.name
 	};
+}
+
+export async function generateStaticParams() {
+	// Top 100 most popular events
+	return [
+		{ slug: 'austin' },
+		{ slug: 'new-york' },
+		{ slug: 'san-francisco' },
+	]
 }
 
 export default async function EventPage({ params }: Props) {

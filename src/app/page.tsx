@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SearchForm from "@/components/searchForm";
+import SearchForm from "@/components/search-form";
 
 export default function Home() {
   return (

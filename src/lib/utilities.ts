@@ -1,6 +1,3 @@
-import {API_URL} from "@/lib/constants";
-import {EventoEvent} from "@/lib/types";
-
 export async function sleep(ms: number) {
 	return new Promise(resolve =>
 		setTimeout(resolve, ms)
@@ -23,18 +20,4 @@ export function titleCaseSmart(str: string) {
 			return tok.replace(/^\p{L}/u, (c) => c.toUpperCase());
 		})
 		.join("");
-}
-
-export async function getEvents(city: string) {
-	const response = await fetch(`${API_URL}events?city=${city}`);
-	const events: EventoEvent[] = await response.json();
-
-	return events;
-}
-
-export async function getEvent(slug: string) {
-	const response = await fetch(`${API_URL}events/${slug}`);
-	const event = await response.json();
-
-	return event;
 }
