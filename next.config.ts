@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 
 const nextConfig: NextConfig = {
-	// output: 'export',
   images: {
 		remotePatterns: [
 			{
@@ -13,7 +13,12 @@ const nextConfig: NextConfig = {
 				hostname: 'images.unsplash.com',
 			},
 		]
-  }
+  },
+	turbopack: {
+		resolveAlias: {
+			"@": path.resolve(__dirname, "src"),
+		},
+	},
 };
 
 export default nextConfig;
